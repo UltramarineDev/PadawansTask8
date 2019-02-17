@@ -23,28 +23,37 @@ namespace PadawansTask8
             arr = text.ToCharArray();
 
             List<string> list = new List<string>();
-            var index = 0;
-            for (int i = 0; i < arr.Length; i++)
+
+            int i = 0;
+            while (i != arr.Length)
             {
-                if (arr[i] == ' ' || arr[i] == '.' || arr[i] == ',' || arr[i] == '!' || arr[i] == '?' || arr[i] == '-' || arr[i] == ':' || arr[i] == ';')
+                string stringTemp = "";
+
+                while (arr[i] != ' ' && arr[i] != '.' && arr[i] != ',' && arr[i] != '!' && arr[i] != '?' && arr[i] != '-' && arr[i] != ':' && arr[i] != ';')
                 {
-                    string stringTemp = "";
-                    for (int j = index; j < i; j++)
+
+                    stringTemp += arr[i];
+                    i++;
+                    if (i == arr.Length)
                     {
-                        stringTemp += arr[j];
+                        break;
                     }
-                    index = i + 1;
-                    list.Add(stringTemp);
+                }
+
+                list.Add(stringTemp);
+                if (i != arr.Length)
+                {
                     list.Add(arr[i].ToString());
+                    i++;
                 }
             }
 
-            for (int i = 0; i < list.Count - 1; i++)
+            for (int k = 0; k < list.Count - 1; k++)
             {
-                for (int j = i + 1; j < list.Count; j++)
+                for (int j = k + 1; j < list.Count; j++)
                 {
 
-                    if (list[i].CompareTo(list[j]) == 0 && list[i] != " " && list[i] != "." && list[i] != "," && list[i] != "!" && list[i] != "?" && list[i] != "-" && list[i] != ":" && list[i] != ";")
+                    if (list[k].CompareTo(list[j]) == 0 && list[k] != " " && list[k] != "." && list[k] != "," && list[k] != "!" && list[k] != "?" && list[k] != "-" && list[k] != ":" && list[k] != ";")
                     {
                         list[j] = "";
                     }
